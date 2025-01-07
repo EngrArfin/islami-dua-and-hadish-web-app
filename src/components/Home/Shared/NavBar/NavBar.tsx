@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import MidNav from "./MidNav";
 
 const NavBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -88,6 +89,7 @@ const NavBar = () => {
             </button>
           </div>
         </header>
+        <MidNav />
 
         {/* Content */}
         <section className="space-y-6">
