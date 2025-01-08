@@ -1,6 +1,17 @@
 "use client";
 import { useState } from "react";
 import MidNav from "./MidNav";
+import logo from "../../../../UI/icon/icom.png";
+
+import { FaHandHoldingHeart, FaUserCircle } from "react-icons/fa";
+import { IoIosSettings, IoMdBook } from "react-icons/io";
+import Image from "next/image";
+import { GoHome } from "react-icons/go";
+import { RiGalleryView2 } from "react-icons/ri";
+import { PiLightbulbFilamentLight } from "react-icons/pi";
+import { IoBookmarkOutline } from "react-icons/io5";
+import { GrUserAdd } from "react-icons/gr";
+import { TbMessages } from "react-icons/tb";
 
 const NavBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -9,7 +20,6 @@ const NavBar = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      {/* Left Sidebar */}
       <aside
         className={`${
           isSidebarOpen ? "w-64" : "w-20"
@@ -20,22 +30,70 @@ const NavBar = () => {
             className="mb-4 p-2 rounded-full hover:bg-gray-200"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           >
-            <span className="material-icons text-gray-600">
-              {isSidebarOpen ? "menu_open" : "menu"}
-            </span>
+            {isSidebarOpen ? (
+              <Image
+                src={logo}
+                alt="Logo"
+                className="h-12 w-12 object-contain"
+              />
+            ) : (
+              <span className="material-icons text-gray-600">
+                <Image
+                  src={logo}
+                  alt="Logo"
+                  className="h-10 w-10 object-contain"
+                />
+              </span>
+            )}
           </button>
           <nav className="space-y-4">
             <button className="w-full text-left flex items-center gap-2">
-              <span className="material-icons">home</span>
+              <span className="material-icons">
+                <GoHome />
+              </span>
               {isSidebarOpen && <span>Home</span>}
             </button>
             <button className="w-full text-left flex items-center gap-2">
-              <span className="material-icons">grid_view</span>
-              {isSidebarOpen && <span>Categories</span>}
+              <span className="material-icons">
+                <RiGalleryView2 />
+              </span>
+              {isSidebarOpen && <span>All Duas</span>}
             </button>
             <button className="w-full text-left flex items-center gap-2">
-              <span className="material-icons">lightbulb</span>
-              {isSidebarOpen && <span>Tips</span>}
+              <span className="material-icons">
+                <PiLightbulbFilamentLight />
+              </span>
+              {isSidebarOpen && <span>Memorize</span>}
+            </button>
+            <button className="w-full text-left flex items-center gap-2">
+              <span className="material-icons">
+                <IoBookmarkOutline />
+              </span>
+              {isSidebarOpen && <span>Bookmark</span>}
+            </button>
+            <button className="w-full text-left flex items-center gap-2">
+              <span className="material-icons">
+                <GrUserAdd />
+              </span>
+              {isSidebarOpen && <span>Reqyeah</span>}
+            </button>
+            <button className="w-full text-left flex items-center gap-2">
+              <span className="material-icons">
+                <TbMessages />
+              </span>
+              {isSidebarOpen && <span>Dua Info</span>}
+            </button>
+            <button className="w-full text-left flex items-center gap-2">
+              <span className="material-icons">
+                <IoMdBook />
+              </span>
+              {isSidebarOpen && <span>Book</span>}
+            </button>
+            <button className="w-full text-left flex items-center gap-2">
+              <span className="material-icons">
+                <FaHandHoldingHeart />
+              </span>
+              {isSidebarOpen && <span>I Want To Support</span>}
             </button>
           </nav>
         </div>
@@ -60,20 +118,34 @@ const NavBar = () => {
                 onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
               >
                 <span className="material-icons text-gray-600">
-                  account_circle
+                  {/* account_circle */}
+                  <FaUserCircle />
                 </span>
               </button>
               {isUserMenuOpen && (
                 <div className="absolute right-0 mt-2 bg-white border rounded shadow-lg w-40">
                   <ul>
-                    <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                      Profile
+                    <li className="flex p-2 hover:bg-gray-100 cursor-pointer">
+                      <FaHandHoldingHeart className="mr-3" />
+                      Support Us
                     </li>
                     <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                      Settings
+                      Download Dua App
                     </li>
                     <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                      Logout
+                      Privacy Policy
+                    </li>
+                    <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                      Thanks & Credits
+                    </li>
+                    <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                      About Us
+                    </li>
+                    <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                      Copyright Warning
+                    </li>
+                    <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                      Our Other projects
                     </li>
                   </ul>
                 </div>
@@ -85,7 +157,9 @@ const NavBar = () => {
               className="p-2 rounded-full hover:bg-gray-200"
               onClick={() => setIsSettingsOpen(true)}
             >
-              <span className="material-icons text-gray-600">settings</span>
+              <span className="material-icons text-gray-600">
+                <IoIosSettings />
+              </span>
             </button>
           </div>
         </header>
@@ -119,19 +193,21 @@ const NavBar = () => {
           </button>
           <div>
             <h2 className="text-lg font-semibold mb-4">Settings</h2>
+
             <div className="space-y-4">
               <div>
-                <h3 className="font-medium text-gray-700">Language Settings</h3>
+                <button className="p-2 font-medium text-gray-700 hover:first-line:bg-red-100">
+                  Language Settings
+                </button>
                 <select className="mt-2 w-full p-2 border border-gray-300 rounded">
                   <option>English</option>
                   <option>বাংলা</option>
                 </select>
               </div>
               <div>
-                <h3 className="font-medium text-gray-700">General Settings</h3>
-                <p className="text-sm text-gray-600">
-                  Adjust app preferences and themes.
-                </p>
+                <button>General Setting</button>
+                <button>Font Setting</button>
+                <button>Appearance Setting</button>
               </div>
             </div>
           </div>
